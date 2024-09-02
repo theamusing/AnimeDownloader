@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Downloader</title>
+    <style>
+        #progressContainer {
+            display: none;
+            width: 100%;
+            background-color: #f3f3f3;
+        }
+
+        #progressBar {
+            width: 0%;
+            height: 30px;
+            background-color: #4caf50;
+        }
+
+        #downloadStatus {
+            margin-top: 10px;
+        }
+
+        .select-container {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            margin-top: 20px;
+            /* 可以根据需要调整顶部间距 */
+        }
+
+        .select-container select {
+            margin: 0 10px;
+            /* 调整每个select元素之间的间距 */
+            padding: 5px;
+            /* 调整select元素内的间距 */
+        }
+    </style>
+    <script src="https://alcdn.msauth.net/browser/2.18.0/js/msal-browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mux.js/6.1.0/mux.min.js"></script> -->
+    <script src="mux-mp4.js"></script>
+    <script defer src="HLSdownloader.js"></script>
+    <script defer src="app.js"></script>
+
+</head>
+
+<body>
+    <h1>Animation Downloader</h1>
+    <label for="searchBox">Anime name:</label>
+    <input type="text" id="searchBox" placeholder="Search videos...">
+    <button id="searchBtn">Search</button>
+    <div style="display: flex; justify-content: left; margin-top: 20px">
+        <select id="animeList" size="10" style="display: none; margin:10px; padding: 5px"></select>
+        <select id="episodeList" size="10" style="display: none; margin:10px; padding: 5px"></select>
+        <div style="margin-bottom: 10px;">
+            <input id="animeUrlText" style="display: none; margin:10px; padding: 5px" type="text" value="" readonly
+                style="width: 100%; padding: 5px;">
+            <input id="animeTypeText" style="display: none; margin:10px; padding: 5px" type="text" value="" readonly
+                style="width: 100%; padding: 5px;">
+        </div>
+    </div>
+    <div id="loading" style="display: none;">Loading...</div>
+    <div style="display: flex; justify-content: left;">
+        <button id="retryBtn" style="display: none; margin:10px; padding: 5px">retry</button>
+        <button id="downloadBtn" style="display: none; margin:10px; padding: 5px">download</button>
+    </div>
+    <video id="videoPlayer" width="600" controls style="display: none;"></video>
+    <div id="HLSdownloader">
+        <div id="progressContainer">
+            <div id="progressBar"></div>
+        </div>
+        <div id="downloadStatus"></div>
+    </div>
+</body>
+
+</html>
